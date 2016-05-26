@@ -5,10 +5,19 @@ import urllib2
 import re
 import sys
 reload(sys)
+
 sys.setdefaultencoding("utf-8")
 page = 1
 user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/47.0.2526.73 Chrome/47.0.2526.73 Safari/537.36'
 headers = { 'User-Agent' : user_agent }
+
+def usage():
+	print('usage : python pyQiu.py <page>')
+	print('example: python pyQiu.py 3')
+
+if len(sys.argv)!=2:
+	usage()
+	exit()
 
 for page in range(1,int(sys.argv[1])):
     try:
