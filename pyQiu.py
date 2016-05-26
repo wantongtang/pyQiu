@@ -19,6 +19,7 @@ if len(sys.argv)!=2:
 	usage()
 	exit()
 
+pattern = re.compile('<div class="content">(.*?)<.*?></div>.*?<div class="stats">',re.S)
 for page in range(1,int(sys.argv[1])):
     try:
         cookie = cookielib.CookieJar()
@@ -28,7 +29,6 @@ for page in range(1,int(sys.argv[1])):
         request = urllib2.Request(url,headers = headers)
         response = opener.open(request)
         content = response.read().decode('utf-8')
-        pattern = re.compile('<div class="content">(.*?)<.*?></div>.*?<div class="stats">',re.S)
         items = re.findall(pattern,content)
         for item in items:
             print item
